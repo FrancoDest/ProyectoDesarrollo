@@ -1,4 +1,4 @@
-export enum IUsuarios{
+export enum IUSUARIOS{
     Administradores,
     Operarios,
     Auditores
