@@ -2,7 +2,8 @@ import { IUSUARIOS } from "./IUsuarios";
 
 export interface Usuarios{
     Id : number;
+    Nombre: String;
     Clase : IUSUARIOS;
     Mail : String;
-    Contraseña : String;
+    Contrasena : String;
 }

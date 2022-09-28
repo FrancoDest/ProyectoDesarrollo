@@ -4,11 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-
-import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { ModuloUsuarioComponent } from './modulo-usuario/modulo-usuario.component';
-
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModalComponent } from './modal/modal.component';
 
 
 
@@ -16,8 +14,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   declarations: [
     AppComponent,
     LoginComponent,
-    AdminLoginComponent,
-    ModuloUsuarioComponent
+    ModuloUsuarioComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
