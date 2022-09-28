@@ -9,6 +9,8 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { ModuloUsuarioComponent } from './modulo-usuario/modulo-usuario.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModuloBienvenidaComponent } from './modulo-bienvenida/modulo-bienvenida.component';
+import { ModuloMolinoComponent } from './modulo-molino/modulo-molino.component';
 
 
 
@@ -17,7 +19,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppComponent,
     LoginComponent,
     AdminLoginComponent,
-    ModuloUsuarioComponent
+    ModuloUsuarioComponent,
+    ModuloBienvenidaComponent,
+    ModuloMolinoComponent
   ],
   imports: [
     BrowserModule,
