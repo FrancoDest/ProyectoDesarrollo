@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { ModalComponent } from './modal/modal.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -15,10 +15,9 @@ import { ModuloMolinoComponent } from './modulo-molino/modulo-molino.component';
   declarations: [
     AppComponent,
     LoginComponent,
-    AdminLoginComponent,
     ModuloUsuarioComponent,
     ModuloBienvenidaComponent,
-    ModuloMolinoComponent
+    ModuloMolinoComponent,
     ModalComponent
   ],
   imports: [
