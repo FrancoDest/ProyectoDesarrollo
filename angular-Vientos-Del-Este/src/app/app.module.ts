@@ -6,7 +6,8 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { ModuloUsuarioComponent } from './modulo-usuario/modulo-usuario.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ModalComponent } from './modal/modal.component';
+import { ModuloBienvenidaComponent } from './modulo-bienvenida/modulo-bienvenida.component';
+import { ModuloMolinoComponent } from './modulo-molino/modulo-molino.component';
 
 
 
@@ -14,7 +15,10 @@ import { ModalComponent } from './modal/modal.component';
   declarations: [
     AppComponent,
     LoginComponent,
+    AdminLoginComponent,
     ModuloUsuarioComponent,
+    ModuloBienvenidaComponent,
+    ModuloMolinoComponent
     ModalComponent
   ],
   imports: [
