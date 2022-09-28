@@ -1,7 +1,9 @@
-import { IUsuarios } from "./IUsuarios";
+import { IUSUARIOS } from "./IUsuarios";
 
 export interface Usuarios{
-    Clase : IUsuarios;
+    Id : number;
+    Nombre: String;
+    Clase : IUSUARIOS;
     Mail : String;
-    Contraseña : String;
+    Contrasena : String;
 }

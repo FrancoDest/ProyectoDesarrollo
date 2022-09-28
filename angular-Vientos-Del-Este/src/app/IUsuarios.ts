@@ -1,5 +1,5 @@
-export enum IUsuarios{
-    Administradores,
-    Operarios,
-    Auditores
+export enum IUSUARIOS{
+    Adm = "Administradores",
+    Ope = "Operarios",
+    Aud = "Auditores"
 }
