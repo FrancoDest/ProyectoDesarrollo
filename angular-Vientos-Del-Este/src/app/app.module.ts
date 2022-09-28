@@ -15,11 +15,9 @@ import { ModuloMolinoComponent } from './modulo-molino/modulo-molino.component';
   declarations: [
     AppComponent,
     LoginComponent,
-    AdminLoginComponent,
     ModuloUsuarioComponent,
     ModuloBienvenidaComponent,
     ModuloMolinoComponent
-    ModalComponent
   ],
   imports: [
     BrowserModule,
