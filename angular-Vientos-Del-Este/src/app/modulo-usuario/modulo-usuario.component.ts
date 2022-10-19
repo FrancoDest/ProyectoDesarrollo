@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ListaDeUsuariosService } from '../lista-de-usuarios.service';
+import { AccesoABDService } from '../acceso-abd.service';
 import { Usuarios } from '../Usuarios';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
@@ -12,7 +12,7 @@ export class ModuloUsuarioComponent implements OnInit {
   userList : Usuarios[] = [];
   closeResult = '';
 
-  constructor(private Servicio : ListaDeUsuariosService,
+  constructor(private Servicio : AccesoABDService,
      public modal:NgbModal) {
    }
 
@@ -21,21 +21,5 @@ export class ModuloUsuarioComponent implements OnInit {
   }
   getUsuarios() : void{
     this.Servicio.getUser().subscribe(userList => this.userList = userList);
-  }
-  open(content : any) {
-    this.modal.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
-  }
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
   }
 }
