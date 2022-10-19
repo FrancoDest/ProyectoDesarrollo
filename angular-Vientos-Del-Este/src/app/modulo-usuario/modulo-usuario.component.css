@@ -79,19 +79,19 @@ opacity: 0.9;
 font-size: 22px;
 margin: 0 5px;
 }
-table.table td a {
+table.table td button {
 font-weight: bold;
 color: #566787;
 display: inline-block;
 text-decoration: none;
 }
-table.table td a:hover {
+table.table td button:hover {
 color: #2196F3;
 }
-table.table td a.settings {
+table.table td button.settings {
 color: #2196F3;
 }
-table.table td a.delete {
+table.table td button.delete {
 color: #F44336;
 }
 table.table td i {
