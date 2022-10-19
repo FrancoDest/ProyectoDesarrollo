@@ -7,6 +7,7 @@ import { ModuloUsuarioComponent } from './modulo-usuario/modulo-usuario.componen
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModuloBienvenidaComponent } from './modulo-bienvenida/modulo-bienvenida.component';
 import { ModuloMolinoComponent } from './modulo-molino/modulo-molino.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 
 
@@ -16,7 +17,8 @@ import { ModuloMolinoComponent } from './modulo-molino/modulo-molino.component';
     LoginComponent,
     ModuloUsuarioComponent,
     ModuloBienvenidaComponent,
-    ModuloMolinoComponent
+    ModuloMolinoComponent,
+    NavBarComponent
     ],
   imports: [
     BrowserModule,
