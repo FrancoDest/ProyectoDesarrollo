@@ -5,41 +5,7 @@ body {
   img {
     max-width: 100%; }
   
-  .preview {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: column;
-        -ms-flex-direction: column;
-            flex-direction: column; }
-    @media screen and (max-width: 996px) {
-      .preview {
-        margin-bottom: 20px; } }
-  
-  .preview-pic {
-    -webkit-box-flex: 1;
-    -webkit-flex-grow: 1;
-        -ms-flex-positive: 1;
-            flex-grow: 1; }
-  
-  .preview-thumbnail.nav-tabs {
-    border: none;
-    margin-top: 15px; }
-    .preview-thumbnail.nav-tabs li {
-      width: 18%;
-      margin-right: 2.5%; }
-      .preview-thumbnail.nav-tabs li img {
-        max-width: 100%;
-        display: block; }
-      .preview-thumbnail.nav-tabs li a {
-        padding: 0;
-        margin: 0; }
-      .preview-thumbnail.nav-tabs li:last-of-type {
-        margin-right: 0; }
-  
+
   .tab-content {
     overflow: hidden; }
     .tab-content img {
@@ -79,14 +45,14 @@ body {
         -ms-flex-positive: 1;
             flex-grow: 1; }
   
-  .product-title, .price, .sizes, .colors {
+  .product-title, .caracteristica, .sizes, .colors {
     text-transform: UPPERCASE;
     font-weight: bold; }
   
-  .checked, .price span {
-    color: #ff9f1a; }
+  .checked, .caracteristica span {
+    color: black; }
   
-  .product-title, .rating, .product-description, .price, .vote, .sizes {
+  .product-title, .product-description, .caracteristica {
     margin-bottom: 15px; }
   
   .product-title {
@@ -107,8 +73,8 @@ body {
     .color:first-of-type {
       margin-left: 20px; }
   
-  .add-to-cart, .like {
-    background: #ff9f1a;
+  .approbe-or-not,.preb-or-next, .like {
+    background: #2196F3;
     padding: 1.2em 1.5em;
     border: none;
     text-transform: UPPERCASE;
@@ -116,27 +82,7 @@ body {
     color: #fff;
     -webkit-transition: background .3s ease;
             transition: background .3s ease; }
-    .add-to-cart:hover, .like:hover {
-      background: #b36800;
-      color: #fff; }
-  
-  .not-available {
-    text-align: center;
-    line-height: 2em; }
-    .not-available:before {
-      font-family: fontawesome;
-      content: "\f00d";
-      color: #fff; }
-  
-  .orange {
-    background: #ff9f1a; }
-  
-  .green {
-    background: #85ad00; }
-  
-  .blue {
-    background: #0076ad; }
-  
+
   .tooltip-inner {
     padding: 1.3em; }
   
