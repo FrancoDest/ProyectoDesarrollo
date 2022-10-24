@@ -8,6 +8,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModuloBienvenidaComponent } from './modulo-bienvenida/modulo-bienvenida.component';
 import { ModuloMolinoComponent } from './modulo-molino/modulo-molino.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DragNDropComponent } from './drag-ndrop/drag-ndrop.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+
 import { CatalogoPiesasComponent } from './catalogo-piesas/catalogo-piesas.component';
 
 
@@ -20,12 +24,15 @@ import { CatalogoPiesasComponent } from './catalogo-piesas/catalogo-piesas.compo
     ModuloBienvenidaComponent,
     ModuloMolinoComponent,
     NavBarComponent,
+    DragNDropComponent,
     CatalogoPiesasComponent
     ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    DragDropModule,
+    NgbModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AccesoABDService } from '../acceso-abd.service';
+import { AccesoABDService } from '../Usuarios.service';
 import { Usuarios } from '../Usuarios';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
