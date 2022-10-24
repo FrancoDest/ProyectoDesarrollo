@@ -12,6 +12,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DragNDropComponent } from './drag-ndrop/drag-ndrop.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
+import { CatalogoPiesasComponent } from './catalogo-piesas/catalogo-piesas.component';
+
 
 
 @NgModule({
@@ -22,7 +24,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     ModuloBienvenidaComponent,
     ModuloMolinoComponent,
     NavBarComponent,
-    DragNDropComponent
+    DragNDropComponent,
+    CatalogoPiesasComponent
     ],
   imports: [
     BrowserModule,
