@@ -4,12 +4,14 @@ import { LoginComponent } from './login/login.component';
 import { ModuloBienvenidaComponent } from './modulo-bienvenida/modulo-bienvenida.component';
 import { ModuloMolinoComponent } from './modulo-molino/modulo-molino.component';
 import { ModuloUsuarioComponent } from './modulo-usuario/modulo-usuario.component';
+import { DragNDropComponent } from './drag-ndrop/drag-ndrop.component';
 
 const routes: Routes = [ 
   { path: 'Login' , component: LoginComponent},
   { path: 'Bienvenida' , component: ModuloBienvenidaComponent},
   { path: 'Molino' , component: ModuloMolinoComponent},
   { path: 'Usuarios' , component: ModuloUsuarioComponent},
+  { path: 'Armador', component: DragNDropComponent},
   { path: '' , component: ModuloUsuarioComponent}
 ];
 

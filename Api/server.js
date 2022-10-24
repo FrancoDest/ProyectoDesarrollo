@@ -4,7 +4,7 @@ const port = 3000
 
 var Usuarios = [];
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send('')
 })
 
 app.listen(port, () => {

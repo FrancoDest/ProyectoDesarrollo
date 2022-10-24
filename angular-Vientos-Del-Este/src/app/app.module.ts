@@ -8,6 +8,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModuloBienvenidaComponent } from './modulo-bienvenida/modulo-bienvenida.component';
 import { ModuloMolinoComponent } from './modulo-molino/modulo-molino.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DragNDropComponent } from './drag-ndrop/drag-ndrop.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 
@@ -18,12 +21,15 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     ModuloUsuarioComponent,
     ModuloBienvenidaComponent,
     ModuloMolinoComponent,
-    NavBarComponent
+    NavBarComponent,
+    DragNDropComponent
     ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    DragDropModule,
+    NgbModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
