@@ -9,22 +9,22 @@
       [cdkDropListConnectedTo]="[doneList]"
       class="drag-list"
       (cdkDropListDropped)="drop($event)">
-      <div class="drag-box" *ngFor="let item of todo" cdkDrag>{{item.Nombre}}</div>
+      <div class="drag-box" *ngFor="let item of todo" cdkDrag><img class="imagen" src={{item.Foto}}>Categoria: {{item.Categoria}}<br>Altura: {{item.Altura}}<br>Material: {{item.Material}}</div>
     </div>
   </div>
   
   <div class="drag-container">
 
     <h2>Plano de molino</h2>
-  
     <div
       cdkDropList
       #doneList="cdkDropList"
-      [cdkDropListData]="done"
+      [cdkDropListData]="enProceso"
       [cdkDropListConnectedTo]="[todoList]"
       class="drag-list"
       (cdkDropListDropped)="drop($event)">
-      <div class="drag-box" *ngFor="let item of done" cdkDrag>{{item.Nombre}}</div>
+      <div class="drag-box" *ngFor="let item of enProceso" cdkDrag><img class="imagen" src={{item.Foto}}>Categoria: {{item.Categoria}}<br>Altura: {{item.Altura}}<br>Material: {{item.Material}}</div>
     </div>
   </div>
   
+<button class="Drag-boton">Submitt</button>
