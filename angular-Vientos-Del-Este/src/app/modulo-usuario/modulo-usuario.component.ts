@@ -13,14 +13,15 @@ export class ModuloUsuarioComponent implements OnInit {
   userList : Usuarios[] = USUARIOS;
   closeResult = '';
 
-  constructor(private Servicio : AccesoABDService,
-     public modal:NgbModal) {
+  constructor(//private Servicio : AccesoABDService,
+     public modal:NgbModal
+     ){
    }
 
   ngOnInit(): void {
-    this.getUsuarios();
+    //this.getUsuarios();
   }
   getUsuarios() : void{
-    this.Servicio.getUser().subscribe(userList => this.userList = userList);
+   //this.Servicio.getUser().subscribe(userList => this.userList = userList);
   }
 }
