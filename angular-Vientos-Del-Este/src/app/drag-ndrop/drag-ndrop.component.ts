@@ -11,7 +11,7 @@ import { IPartes } from '../IPartes';
 })
 export class DragNDropComponent {
 
-  todo: any[] = PARTES;
+  todo: any[] = PARTES.slice();
   enProceso: Partes[] = [];
 
 

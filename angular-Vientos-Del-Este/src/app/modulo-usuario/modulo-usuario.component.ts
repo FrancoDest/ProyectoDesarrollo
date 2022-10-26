@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AccesoABDService } from '../Usuarios.service';
 import { Usuarios } from '../Usuarios';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { USUARIOS } from '../Almacenamiento/ListaDeUsuarios';
 
 @Component({
   selector: 'app-modulo-usuario',
@@ -9,17 +10,18 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./modulo-usuario.component.css']
 })
 export class ModuloUsuarioComponent implements OnInit {
-  userList : Usuarios[] = [];
+  userList : Usuarios[] = USUARIOS;
   closeResult = '';
 
-  constructor(private Servicio : AccesoABDService,
-     public modal:NgbModal) {
+  constructor(//private Servicio : AccesoABDService,
+     public modal:NgbModal
+     ){
    }
 
   ngOnInit(): void {
-    this.getUsuarios();
+    //this.getUsuarios();
   }
   getUsuarios() : void{
-    this.Servicio.getUser().subscribe(userList => this.userList = userList);
+   //this.Servicio.getUser().subscribe(userList => this.userList = userList);
   }
 }
