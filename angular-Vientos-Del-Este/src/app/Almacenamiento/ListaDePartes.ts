@@ -7,4 +7,6 @@ export const PARTES: Partes[] = [
   {   Categoria :IPartes.B,Foto: "assets/BaseMadera.png",Altura : 48,ResistenciaEolica : 7474,Material : "Hierro" },
   {   Categoria : IPartes.C,Foto: "assets/cuerpoHierro.png",Altura : 55,ResistenciaEolica : 666,Material : "MaderaLOL" },
   {   Categoria :IPartes.B,Foto: "assets/BaseMadera.png",Altura : 49,ResistenciaEolica : 7474,Material : "Awa" },
+  {   Categoria : IPartes.C,Foto: "assets/cuerpoHierro.png",Altura : 67,ResistenciaEolica : 666,Material : "MaderaAWA" },
+  {   Categoria :IPartes.B,Foto: "assets/BaseMadera.png",Altura : 21,ResistenciaEolica : 7474,Material : "BODE" }
 ];
