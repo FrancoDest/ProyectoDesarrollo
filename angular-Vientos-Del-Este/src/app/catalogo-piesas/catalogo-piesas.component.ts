@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Partes } from '../Partes';
 import{ComponentServiceService} from'../component-service.service';
+import{PARTES} from '../Almacenamiento/ListaDePartes';
 
 @Component({
   selector: 'app-catalogo-piesas',
@@ -9,7 +10,7 @@ import{ComponentServiceService} from'../component-service.service';
   styleUrls: ['./catalogo-piesas.component.css']
 })
 export class CatalogoPiesasComponent implements OnInit {
-  partList : Partes[]=[];
+  partList : Partes[]=PARTES;
   closeResult = '';
   
 
@@ -17,11 +18,19 @@ export class CatalogoPiesasComponent implements OnInit {
     public modal:NgbModal) { }
 
   ngOnInit(): void {
-    this.getPartes();
+    //this.getPartes();
+
+    //yo??
+    //this.deletePartes();
   }
 
   getPartes(): void{
-    this.Servicio.getParte().subscribe(partList => this.partList=partList);
+    //this.Servicio.getParte().subscribe(partList => this.partList=partList);
   }
+
+ delete(Id:Number):void{
+   // this.Servicio.deletParte(Number);
+  
+ }
 
 }

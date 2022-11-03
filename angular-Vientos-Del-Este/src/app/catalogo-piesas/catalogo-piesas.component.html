@@ -25,6 +25,7 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let Partes of partList">
+                            <td> {{ Partes.Id }} </td>
                             <td> {{ Partes.Categoria }} </td>
                             <td> 
                                 <img src={{Partes.Foto}}>
@@ -33,7 +34,7 @@
                             <td> {{ Partes.ResistenciaEolica }} </td>
                             <td> {{ Partes.Material }} </td>
                             <td>
-                                <button class="delete" title="Delete" data-toggle="Delete">Eliminar</button>
+                                <button (click)="delete(Partes.Id)"class="delete" title="Delete" data-toggle="Delete">Eliminar</button>
                                 <button class="settings" title="Settings" data-toggle="tooltip">Modificar</button>
                             </td>
                         </tr>
