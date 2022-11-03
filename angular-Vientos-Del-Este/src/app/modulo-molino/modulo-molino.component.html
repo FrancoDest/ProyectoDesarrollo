@@ -26,17 +26,17 @@
 						
 						<div class="preview-pic tab-content">
 						  <div class="tab-pane active" id="pic-aspas">
-							<img src="assets/aspaMetal.png" alt="" width="100" height="100">
+							<img src={{actual.Aspa.Foto}} alt="" width="100" height="100">
 						</div>
 						</div>
 						<div class="preview-pic tab-content">
 							<div class="tab-pane active" id="pic-cuerpo">
-							  <img src="assets/cuerpoHierro.png" alt="" width="100" height="100">
+							  <img src={{actual.Cuerpo.Foto}} alt="" width="100" height="100">
 						  </div>
 						</div>
 						<div class="preview-pic tab-content">
 							<div class="tab-pane active" id="pic-base">
-							  <img src="assets/BaseMadera.png" alt="" width="100" height="100">
+							  <img src={{actual.Base.Foto}} alt="" width="100" height="100">
 						  </div>
 						</div>
 						
@@ -44,17 +44,17 @@
 					
 
 					<div class="details col-md-6">
-						<h3 class="product-title">Nombre o Modelo del molino</h3>
-						<p class="product-description">Descripcion del molino particualer</p>
-						<h4 class="caracteristica">Recistencia Heolica:<span>Rest H del molino</span></h4>
-						<h4 class="caracteristica">Precio:<span>$bbbb</span></h4>
-						<h4 class="caracteristica">Codigo:<span>1j31kh31h3</span></h4>
+						<h3 class="product-title">{{actual.Nombre}}</h3>
+						<p class="product-description">{{actual.Descripcion}}</p>
+						<h4 class="caracteristica">Recistencia Heolica:<span>{{actual.ResistenciaHeolica}}</span></h4>
+						<h4 class="caracteristica">Precio:<span>${{actual.Precio}}</span></h4>
+						<h4 class="caracteristica">Codigo:<span>{{actual.Codigo}}</span></h4>
 						
 						<div class="action">
-							<button class="preb-or-next btn btn-default" type="button">"<==="</button>
-							<button class="approbe-or-not btn btn-default" type="button">Aprobar</button>
-							<button class="approbe-or-not btn btn-default" type="button">Rechazar</button>
-							<button class="preb-or-next btn btn-default" type="button">"===>"</button>
+							<button class=preb-or-next (click)="prevMolino()"><<<<<<</button>
+							<button class="approbe-or-not btn btn-default" (click)="aprovar()" type="button">Aprobar</button>
+							<button class="approbe-or-not btn btn-default" (click)="rechazar()" type="button">Rechazar</button>
+							<button class=preb-or-next (click)="nextMolino()">>>>>></button>
 						</div>
 					</div>
 				</div>
