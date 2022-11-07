@@ -13,6 +13,8 @@ import { DragNDropComponent } from './drag-ndrop/drag-ndrop.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { CatalogoPiesasComponent } from './catalogo-piesas/catalogo-piesas.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -32,7 +34,9 @@ import { CatalogoPiesasComponent } from './catalogo-piesas/catalogo-piesas.compo
     AppRoutingModule,
     DragDropModule,
     NgbModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
