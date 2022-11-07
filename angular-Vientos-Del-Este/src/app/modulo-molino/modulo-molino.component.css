@@ -3,13 +3,15 @@ body {
     overflow-x: hidden; }
   
   img {
-    max-width: 100%; }
+    text-align: center;
+      }
   
 
   .tab-content {
-    overflow: hidden; }
+    overflow: hidden;
+    text-align: center; }
     .tab-content img {
-      width: 100%;
+      text-align: center;
       -webkit-animation-name: opacity;
               animation-name: opacity;
       -webkit-animation-duration: .3s;
