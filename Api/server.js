@@ -1,59 +1,33 @@
+// Loads the configuration from config.env to process.env
+require('dotenv').config({ path: './config.env' });
 
 const express = require('express');
 const cors = require('cors');
-const _ = require('lodash');
-const { v4: uuidv4 } = require('uuid');
-// Constants
-const PORT = 3000;
-const HOST = 'localhost';
+// get MongoDB driver connection
+const dbo = require('./db/conn');
 
-// App
+const PORT = process.env.PORT || 5000;
 const app = express();
-var corsOptions = {
-    origin: 'https://localhost:4200/Login',
-    optionsSuccessStatus: 200, 
-    methods: "GET, PUT, POST"
-}
-app.use(express.json())
-app.use(cors(corsOptions));
 
-app.get('/', (req, res) => {
-  res.send('Hello World');
+app.use(cors());
+app.use(express.json());
+app.use(require('./routes/record'));
+
+// Global error handling
+app.use(function (err, _req, res) {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
 });
 
-/*app.get('/card', (req, res) => {
-    res.send(cards);
-  });
-
-app.post('/card', (req, res) => {   
-  let card = {
-    id: uuidv4().toString(),
-    text: req.body.text
+// perform a database connection when the server starts
+dbo.connectToServer(function (err) {
+  if (err) {
+    console.error(err);
+    process.exit();
   }
-  cards.push(card) 
-  res.send(card);
-});
 
-app.put('/card/:id', (req, res) => {    
-  let card = {
-    id: req.params['id'],
-    text: req.body.text
-  }
-  _.remove(cards, (elem)=>{
-    return elem.id == req.params['id']    
+  // start the Express server
+  app.listen(PORT, () => {
+    console.log(`Server is running on port: ${PORT}`);
   });
-  cards.push(card);
-  res.send(card);
 });
-
-app.delete('/card/:id', (req, res) => {    
-  _.remove(cards, (elem)=> {
-    return elem.id == req.params['id']    
-  });
-  res.send(cards);
-});*/
-
-
-app.listen(PORT, HOST);
-console.log(`Running on http://${HOST}:${PORT}`); 
-
