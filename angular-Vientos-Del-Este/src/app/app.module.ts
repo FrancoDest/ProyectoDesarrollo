@@ -15,6 +15,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { CatalogoPiesasComponent } from './catalogo-piesas/catalogo-piesas.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { MolinosComponent } from './molinos/molinos.component';
 
 
 
@@ -27,7 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
     ModuloMolinoComponent,
     NavBarComponent,
     DragNDropComponent,
-    CatalogoPiesasComponent
+    CatalogoPiesasComponent,
+    MolinosComponent
     ],
   imports: [
     BrowserModule,
