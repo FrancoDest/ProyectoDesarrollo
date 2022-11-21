@@ -7,6 +7,8 @@ import { ModuloBienvenidaComponent } from './modulo-bienvenida/modulo-bienvenida
 import { ModuloUsuarioComponent } from './modulo-usuario/modulo-usuario.component';
 import { DragNDropComponent } from './drag-ndrop/drag-ndrop.component';
 import { MolinoListasComponent } from './molino-listas/molino-listas.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+
 
 const routes: Routes = [ 
   { path: 'Login' , component: LoginComponent},
