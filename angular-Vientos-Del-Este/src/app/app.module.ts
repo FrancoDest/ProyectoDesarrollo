@@ -6,16 +6,15 @@ import { LoginComponent } from './login/login.component';
 import { ModuloUsuarioComponent } from './modulo-usuario/modulo-usuario.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModuloBienvenidaComponent } from './modulo-bienvenida/modulo-bienvenida.component';
-import { ModuloMolinoComponent } from './modulo-molino/modulo-molino.component';
+//import { ModuloMolinoComponent } from './modulo-molino/modulo-molino.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DragNDropComponent } from './drag-ndrop/drag-ndrop.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-
 import { CatalogoPiesasComponent } from './catalogo-piesas/catalogo-piesas.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import { MolinoListasComponent } from './molino-listas/molino-listas.component';
 
 
 @NgModule({
@@ -24,10 +23,11 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     ModuloUsuarioComponent,
     ModuloBienvenidaComponent,
-    ModuloMolinoComponent,
+    //ModuloMolinoComponent,
     NavBarComponent,
     DragNDropComponent,
-    CatalogoPiesasComponent
+    CatalogoPiesasComponent,
+    MolinoListasComponent
     ],
   imports: [
     BrowserModule,

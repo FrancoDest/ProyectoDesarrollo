@@ -1,81 +1,93 @@
-
-    <div class="container-xl">
-        <div class="table-responsive">
-            <div class="table-wrapper">
-                <div class="table-title">
-                    <div class="row">
-                        <div class="col-sm-5">
-                            <h2>Administracion <b>Partes</b></h2>
-                        </div>
-                        <div class="col-sm-7">
-                            <button type="button" class="btn btn-secondary" (click)="modal.open(contenido)">Agregar
-                                Partes</button>
-                        </div>
+<div class="container-xl">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h2>Administracion <b>Partes</b></h2>
+                    </div>
+                    <div class="col-sm-7">
+                        <button type="button" class="btn btn-secondary" (click)="modal.open(contenido)">Agregar
+                            Partes</button>
                     </div>
                 </div>
-                <table class="table table-striped table-hover">
-                    <thead>
-                        <tr>
-                            <th>Categoria</th>
-                            <th>Foto</th>
-                            <th>Altura</th>
-                            <th>ResistenciaEolica</th>
-                            <th>Material</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let Partes of partList">
-                            <td> {{ Partes.Id }} </td>
-                            <td> {{ Partes.Categoria }} </td>
-                            <td> 
-                                <img src={{Partes.Foto}}>
-                            </td>
-                            <td> {{ Partes.Altura}} </td>
-                            <td> {{ Partes.ResistenciaEolica }} </td>
-                            <td> {{ Partes.Material }} </td>
-                            <td>
-                                <button (click)="delete(Partes.Id)"class="delete" title="Delete" data-toggle="Delete">Eliminar</button>
-                                <button class="settings" title="Settings" data-toggle="tooltip">Modificar</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="clearfix">
-                </div>
+            </div>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Categoria</th>
+                        <th>Foto</th>
+                        <th>Altura</th>
+                        <th>ResistenciaEolica</th>
+                        <th>Material</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let Partes of partList">
+                        <td> {{ Partes.Categoria }} </td>
+                        <td><img src={{Partes.Foto}}></td>
+                        <td> {{ Partes.Altura}} </td>
+                        <td> {{ Partes.ResistenciaEolica }} </td>
+                        <td> {{ Partes.Material }} </td>
+                        <td>
+                            <button class="delete" title="Delete" data-toggle="Delete" (click)="deleteParte(Partes)">Eliminar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="clearfix">
             </div>
         </div>
     </div>
-    <hr>
-    <ng-template #contenido let-modal>
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title"> Menu de agregacion de Parte</h4>
-                    <button class="close" aria-label="close" type="button" (click)="modal.dismiss()">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <label for="recipient-name" class="col-form-label">Categoria:
-                        <input id="name">
-                    </label>
-                    <label for="recipient-password" class="col-form-label">Foto:
-                        <input id="password">
-                    </label>
-                    <label for="recipient-name" class="col-form-label">Altura
-                        <input id="name">
-                    </label>
-                    <label for="recipient-name" class="col-form-label">Recisitencia Heolica:
-                        <input id="name">
-                    </label>
-                    <label for="recipient-name" class="col-form-label">Material
-                        <input id="name">
+</div>
+<hr>
+<ng-template #contenido let-modal>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"> Menu de agregacion de Parte</h4>
+                <button class="close" aria-label="close" type="button" (click)="modal.dismiss()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="recipient-cat" class="col-form-label">Categoria:
+                            <select [(ngModel)]="nuevaCategoria"> 
+                                <option value=""></option>
+                                <option value="Aspa">Aspa</option>
+                                <option value="Cuerpo">Cuerpo</option>
+                                <option value="Base">Base</option>
+                            </select>
                     </label>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success" (click)="modal.close()">OK!</button>
+                <div class="mb-3">
+                    <label for="recipient-high" class="col-form-label">Altura
+                        <input type="number" class="form-control" [(ngModel)]="nuevaAltura">
+                    </label>
+                </div>
+                <div class="mb-3">
+                    <label for="recipient-re" class="col-form-label">Resisitencia Eolica:
+                        <input type="number" class="form-control"[(ngModel)]="nuevaRE">
+                    </label>
+                </div>
+                <div class="mb-3">
+                    <label for="recipient-mat" class="col-form-label">Material
+                        <input type="text" class="form-control" id="recipient-Material" [(ngModel)]="nuevaMat" required #name="ngModel">
+                        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
+                            <div *ngIf="name.errors?.['required']">
+                                El Material es requerido.
+                            </div>
+                        </div>
+
+                    </label>
                 </div>
             </div>
+            <div class="modal-footer">
+                <button id="submit" type="button" class="btn btn-success" (click)="modal.close()" (click)="controladorCreacion()"
+                    data-target="#modalForm">OK!</button>
+            </div>
         </div>
-    </ng-template>
+    </div>
+</ng-template>

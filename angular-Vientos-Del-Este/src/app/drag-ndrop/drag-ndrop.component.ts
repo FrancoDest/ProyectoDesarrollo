@@ -1,19 +1,60 @@
-import { Component } from '@angular/core';
+import { Component , OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { PARTES } from '../Almacenamiento/ListaDePartes';
 import { Partes } from '../Partes';
-import { IPartes } from '../IPartes';
-
+import { ComponentService } from '../Servicios/part.service';
+import { WindmillsService} from '../Servicios/windmills.service';
+import { Molino } from '../Molino';
 @Component({
   selector: 'app-drag-ndrop',
   templateUrl: './drag-ndrop.component.html',
   styleUrls: ['./drag-ndrop.component.css']
 })
-export class DragNDropComponent {
+export class DragNDropComponent implements OnInit{
 
-  todo: any[] = PARTES.slice();
+  todo: any[] = [];
   enProceso: Partes[] = [];
 
+  nombre = "";
+  descripcion="";
+
+  constructor(private ServicioM : WindmillsService, private ServicioP : ComponentService){
+  }
+
+ ngOnInit(): void {
+   this.getPartes();
+ }
+ getPartes(){
+  this.ServicioP.getPart().subscribe(partList => this.todo = partList);
+ }
+  submit(){
+    //if(this.nombre != "" && this.descripcion != "" && this.enProceso.length == 3){
+      let nuevoMolino = new Molino(this.enProceso[0],this.enProceso[1],this.enProceso[2], "Sopas", "Sopass")
+      this.ServicioM.createWindmill(nuevoMolino);
+      this.vaciarParametros();
+      this.vaciarLista();
+    //}
+
+  }
+  vaciarParametros(){
+    this.nombre="";
+    this.descripcion="";
+  }
+  vaciarLista(){
+    let TamañoLista= this.enProceso.length -1 ;
+
+    while( TamañoLista != -1){
+      this.todo.push(this.enProceso[TamañoLista]);
+      TamañoLista= TamañoLista - 1;
+    }
+
+    TamañoLista= this.enProceso.length -1;
+
+    while( TamañoLista != -1){
+      this.enProceso.pop();
+      TamañoLista= TamañoLista - 1;
+    }
+    
+  }
 
   drop(event: CdkDragDrop<Partes[]>) {
 
@@ -30,16 +71,16 @@ export class DragNDropComponent {
       if (!estaAdentro) {//En caso de no estar agregado
         let lugarObjetivo = 0;
         switch ((event.previousContainer.data[event.previousIndex]).Categoria) {//dependiendo de que tipo sea le asigno una posicion.
-          case IPartes.A:
+          case "Aspa":
             lugarObjetivo = 0;
             break;
-          case IPartes.C:
+          case "Cuerpo":
             lugarObjetivo = 1;
-            if(event.container.data.length == 1 && event.container.data[event.currentIndex].Categoria == IPartes.B){//Arreglo en el caso de que se ponga la base antes del cuerpo
+            if(event.container.data.length == 1 && event.container.data[event.currentIndex].Categoria == "Base"){//Arreglo en el caso de que se ponga la base antes del cuerpo
               lugarObjetivo = 0;
             }
             break;
-          case IPartes.B:
+          case "Base":
             lugarObjetivo = 2;
             break;
         }

@@ -1,15 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+/*import { Component, OnInit } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Partes } from '../Partes';
-import{ComponentServiceService} from'../component-service.service';
-import{PARTES} from '../Almacenamiento/ListaDePartes';
-import { MOLINOS } from '../Almacenamiento/ListaDeMolinos';
+import{ComponentService} from'../Servicios/part.service';
 import { Molino } from '../Molino';
 import { ThisReceiver } from '@angular/compiler';
-
-
-
-
 
 @Component({
   selector: 'app-modulo-molino',
@@ -26,7 +20,7 @@ export class ModuloMolinoComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  nextMolino():void{//lo que ase el boton de siguiente
+  nextMolino():void{//lo que hace el boton de siguiente
     if(this.posicion==this.mayor)
       {
         this.posicion=0;//si la poscion actual es la ultima, devuelvo la poscion a zero, para que sea circular
@@ -44,15 +38,15 @@ export class ModuloMolinoComponent implements OnInit {
   prevMolino():void{
     if(this.posicion==0)
     {
-      this.posicion=this.mayor;//si la poscicon actual es zero coloco el ultimo molino
+      this.posicion=this.mayor;//si la posicion actual es zero coloco el ultimo molino
       
       
     }else{
-      this.posicion--; //si no es zero voy al molino anterior
+      this.posicion--; //si no es cero voy al molino anterior
       
      
     }
-    this.actual=MOLINOS[this.posicion];//"pushe"el mlino actual
+    this.actual=MOLINOS[this.posicion];//"pusheo"el molino actual
   }
   aprovar(): void{
     
@@ -62,4 +56,4 @@ export class ModuloMolinoComponent implements OnInit {
 
   }
 
-}
+}*/
