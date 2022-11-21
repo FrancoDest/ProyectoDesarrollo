@@ -1,13 +1,22 @@
 import { Partes} from './Partes'
 
 export interface Molino{
-    Base : Partes;
-    Cuerpo : Partes;
+    _id? : Number;
     Aspa : Partes;
+    Cuerpo : Partes;
+    Base : Partes;
     Nombre: String;
-    Descripcion:String;
-    Precio : Number;
-    Codigo: String;
-    ResistenciaHeolica : Number;
+    Descripcion: String;
     estado : boolean; //si fue ya fue aprobado
+}
+export class Molino implements Molino{
+    constructor(aspa : Partes, cuerpo: Partes, base: Partes, nombre: string, desc: string)
+    {
+        this.Aspa = aspa;
+        this.Cuerpo = cuerpo;
+        this.Base = base;
+        this.Nombre = nombre;
+        this.Descripcion = desc;
+        this.estado = false; 
+    }
 }
