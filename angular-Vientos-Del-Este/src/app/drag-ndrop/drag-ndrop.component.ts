@@ -1,7 +1,7 @@
 import { Component , OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Partes } from '../Partes';
-import { ComponentService } from '../Servicios/part.service';
+import { PartsService } from '../Servicios/parts.service';
 import { WindmillsService} from '../Servicios/windmills.service';
 import { Molino } from '../Molino';
 @Component({
@@ -17,7 +17,7 @@ export class DragNDropComponent implements OnInit{
   nombre = "";
   descripcion="";
 
-  constructor(private ServicioM : WindmillsService, private ServicioP : ComponentService){
+  constructor(private ServicioM : WindmillsService, private ServicioP : PartsService){
   }
 
  ngOnInit(): void {
@@ -29,7 +29,7 @@ export class DragNDropComponent implements OnInit{
   submit(){
     //if(this.nombre != "" && this.descripcion != "" && this.enProceso.length == 3){
       let nuevoMolino = new Molino(this.enProceso[0],this.enProceso[1],this.enProceso[2], "Sopas", "Sopass")
-      this.ServicioM.createWindmill(nuevoMolino);
+      this.ServicioM.createWindmill(nuevoMolino).subscribe();
       this.vaciarParametros();
       this.vaciarLista();
     //}

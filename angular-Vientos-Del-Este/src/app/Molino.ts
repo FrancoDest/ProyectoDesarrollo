@@ -7,7 +7,7 @@ export interface Molino{
     Base : Partes;
     Nombre: String;
     Descripcion: String;
-    estado : boolean; //si fue ya fue aprobado
+    estado : String; //si fue ya fue aprobado
 }
 export class Molino implements Molino{
     constructor(aspa : Partes, cuerpo: Partes, base: Partes, nombre: string, desc: string)
@@ -17,6 +17,6 @@ export class Molino implements Molino{
         this.Base = base;
         this.Nombre = nombre;
         this.Descripcion = desc;
-        this.estado = false; 
+        this.estado = "Pendiente";
     }
 }

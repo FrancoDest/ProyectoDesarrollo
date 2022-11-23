@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuarios } from '../Usuarios';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { UsuariosService } from '../Servicios/usuarios.service';
 import { FormControl, Validators } from '@angular/forms';
+import { UsersService } from '../Servicios/users.service';
 
 @Component({
   selector: 'app-modulo-usuario',
@@ -18,7 +18,7 @@ export class ModuloUsuarioComponent implements OnInit {
 
   usuarioTemp = new Usuarios("","","");
 
-  constructor(private Servicio : UsuariosService,
+  constructor(private Servicio : UsersService,
      public modal:NgbModal
      ){
    }
@@ -32,17 +32,16 @@ export class ModuloUsuarioComponent implements OnInit {
   }
   createUsuario(){
     let nuevoUsuario = new Usuarios(this.nombre,this.clase,this.nombre);
-    this.userList.push(nuevoUsuario);
-    this.Servicio.createUser(nuevoUsuario);
+    this.Servicio.createUser(nuevoUsuario).subscribe(usuario => {this.userList.push(nuevoUsuario);})
     this.vaciar();
   }
   vaciar(){
     this.nombre="";
     this.clase = "";
   }
-  deleteParte(user : Usuarios){
-    this.Servicio.deleteUser(user);
-    this.userList = this.userList.filter(u=>u._id != user._id);
+  deleteUser(user : Usuarios){
+    this.Servicio.deleteUser(user).subscribe();
+    this.userList = this.userList.filter(p=>p != user);
    }
   controladorCreacion(){
     if (this.clase!= "" && this.nombre != ""){
@@ -50,14 +49,13 @@ export class ModuloUsuarioComponent implements OnInit {
     }
   }
   updateClass(user : Usuarios){
-    if (this.clase!= ""){
-      user.Clase = this.clase;
-      this.Servicio.UpdateUser(user);
-      this.vaciar();
-    }
-  }
-  modificar(user : Usuarios){
-    this.usuarioTemp = user;
+    //if (this.clase != ""){
+      let usuarioT = this.userList.filter(p=>p != user);
+      usuarioT[0].Clase = this.clase;
+      this.Servicio.updateUser(usuarioT[0]).subscribe();
+
+      //this.vaciar();
+    //}
   }
 
 }

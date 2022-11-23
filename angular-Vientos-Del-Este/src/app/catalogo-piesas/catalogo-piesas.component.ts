@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Partes } from '../Partes';
-import{ComponentService} from'../Servicios/part.service';
+import { PartsService } from '../Servicios/parts.service';
 
 @Component({
   selector: 'app-catalogo-piesas',
@@ -21,8 +21,8 @@ export class CatalogoPiesasComponent implements OnInit {
 
   nuevaMat="";
 
-  constructor(private Servicio : ComponentService,
-    public modal:NgbModal
+  constructor(//private Servicio : ComponentService,
+    public modal:NgbModal,public Service : PartsService
     ){
   }
 
@@ -30,12 +30,13 @@ export class CatalogoPiesasComponent implements OnInit {
    this.getPartes();
  }
  getPartes() : void{
-  this.Servicio.getPart().subscribe(partList => this.partList = partList);
+  this.Service.getPart().subscribe(partList => this.partList = partList);
  }
  crearParte(){
   let nuevaParte = new Partes(this.nuevaCategoria,this.nuevaAltura,this.nuevaRE,this.nuevaMat);
-  this.partList.push(nuevaParte);
-  this.Servicio.createPart(nuevaParte);
+  this.Service.addPart(nuevaParte).subscribe(pieza => {
+    this.partList.push(nuevaParte);
+  })
   this.vaciar();
  }
  vaciar(){
@@ -45,8 +46,8 @@ export class CatalogoPiesasComponent implements OnInit {
   this.nuevaMat="";
  }
  deleteParte(parte : Partes){
-  this.Servicio.deletePart(parte);
-  this.partList = this.partList.filter(p=>p._id != parte._id);
+  this.Service.deletePart(parte).subscribe();
+  this.partList = this.partList.filter(p=>p != parte);
  }
  controladorCreacion(){
   this.crearParte();

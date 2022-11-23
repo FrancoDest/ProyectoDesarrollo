@@ -10,5 +10,6 @@ export class Usuarios implements Usuarios {
         this.Nombre = nombre;
         this.Clase = clase;
         this.Contrasena = contrasena;
+        this.Estado = true;
     }
 }

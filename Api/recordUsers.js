@@ -33,7 +33,7 @@ recordRoutes.route('/Usuarios').post(function (req, res) {
     Nombre: req.body.Nombre,
     Clase : req.body.Clase,
     Contrasena : req.body.Contrasena,
-    Estado : true
+    Estado : req.body.estado
   };
 
   dbConnect
@@ -72,22 +72,21 @@ recordRoutes.route('/Usuarios/Recuperacion').post(function (req, res) {
 });
 
 // This section will help you update a class by id.
-recordRoutes.route('/Usuarios/Update').post(function (req, res) {
+recordRoutes.route('/Usuarios').put(function (req, res) {
   const dbConnect = dbo.getDb();
-  const listingQuery = { _id: req.body._id };
+  const listingQuery = { _id: new ObjectId(req.body._id) };
   const updates = {
     $set: {
-      Clase: req.body.Clase,
+      Clase: "Administrador"
     }
   };
-
   dbConnect
     .collection('usuarios')
     .updateOne(listingQuery, updates, function (err, _result) {
       if (err) {
         res
           .status(400)
-          .send(`Error updating user with id ${listingQuery.id}!`);
+          .send(`Error updating user with id ${listingQuery._id}!`);
       } else {
         console.log(_result);
         res.status(204).send();

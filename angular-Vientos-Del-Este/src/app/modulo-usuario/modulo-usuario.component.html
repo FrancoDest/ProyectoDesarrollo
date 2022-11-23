@@ -26,8 +26,8 @@
                         <td> {{ usuario.Clase }} </td>
                         <td>
                             <button class="delete" title="Delete" data-toggle="Delete"
-                                (click)="deleteParte(usuario)">Eliminar</button>
-                            <button class="settings" title="Settings" data-toggle="tooltip" (click)="modificar(usuario)" (click)="modal.open(Modificar)">Modificar</button>
+                                (click)="deleteUser(usuario)">Eliminar</button>
+                            <button class="settings" title="Settings" data-toggle="tooltip" (click)="modal.open(Modificar)">Modificar</button>
                         </td>
                     </tr>
                 </tbody>
