@@ -52,7 +52,7 @@ recordRoutes.route('/Molinos').post(function (req, res) {
     },
     Nombre: req.body.Nombre,
     Descripcion: req.body.Descripcion,
-    Estado : req.body.Estado
+    estado : req.body.estado
   };
 
   dbConnect
@@ -61,7 +61,7 @@ recordRoutes.route('/Molinos').post(function (req, res) {
       if (err) {
         res.status(400).send('Error inserting windmills!');
       } else {
-        console.log(`Added a new match with id ${result.insertedId}`);
+        console.log(`Added a new windmill with id ${result.insertedId}`);
         res.status(204).send();
       }
     });
