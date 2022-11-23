@@ -1,0 +1,28 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Vientos del Este</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-list>  
+      <table class="table table-striped table-hover">
+        <thead>
+            <tr> 
+                <th>Foto</th>
+                <th>Nombre</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let Molino of molinoList">
+                <td> 
+                    <ion-thumbnail slot="start">
+                      <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+                    </ion-thumbnail>
+                </td>
+                <td>El_Nombre</td>
+               
+            </tr>
+        </tbody>
+    </table>
+    </ion-list>
+  </ion-card-content>
+</ion-card>
