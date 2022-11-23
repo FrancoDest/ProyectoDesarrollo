@@ -118,5 +118,24 @@ recordRoutes.route('/Usuarios/:_id').delete(function (req, res) {
     });
 });
 
+// This section will help chek if the user exist.
+recordRoutes.route('/Usuarios/login').post(function (req, res) {
+  const dbConnect = dbo.getDb();
+  const userid = req.body.username;
+  const contrasenia = req.body.password;
+
+  dbConnect.collection('usuarios')
+    .find({},{projection: {nombre: userid, contrasena:contrasenia}}).toArray(function(err,_result){
+      if (err) {
+        res
+          .status(400)
+          .send(`Error updating user with id ${listingQuery.id}!`);
+      } else {
+        console.log(_result);
+        res.status(204).send();
+      }
+    });
+});
+
 
 module.exports = recordRoutes;

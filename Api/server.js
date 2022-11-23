@@ -15,10 +15,12 @@ app.use(require('./recordUsers'));
 app.use(require('./recordWindMill'));
 app.use(require('./recordParts'));
 
+
 app.get('/', (req, res) => {
   //console.log(process.env.HOST);
   res.status(200).send('Hello people!' + process.env.HOST);
 });
+
 // Global error handling
 app.use(function (err, _req, res) {
   console.error(err.stack);
