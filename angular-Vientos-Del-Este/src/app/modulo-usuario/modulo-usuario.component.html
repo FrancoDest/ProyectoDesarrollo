@@ -27,7 +27,7 @@
                         <td>
                             <button class="delete" title="Delete" data-toggle="Delete"
                                 (click)="deleteUser(usuario)">Eliminar</button>
-                            <button class="settings" title="Settings" data-toggle="tooltip" (click)="modal.open(Modificar)">Modificar</button>
+                            <button class="settings" title="Settings" data-toggle="tooltip" (click)="modal.open(Modificar)" (click)="modificarUsuario(usuario)" >Modificar</button>
                         </td>
                     </tr>
                 </tbody>

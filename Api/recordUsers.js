@@ -77,7 +77,7 @@ recordRoutes.route('/Usuarios').put(function (req, res) {
   const listingQuery = { _id: new ObjectId(req.body._id) };
   const updates = {
     $set: {
-      Clase: "Administrador"
+      Clase: req.body.Clase
     }
   };
   dbConnect

@@ -2,6 +2,7 @@ import { Component , OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Partes } from '../Partes';
 import { PartsService } from '../Servicios/parts.service';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { WindmillsService} from '../Servicios/windmills.service';
 import { Molino } from '../Molino';
 @Component({
@@ -17,7 +18,7 @@ export class DragNDropComponent implements OnInit{
   nombre = "";
   descripcion="";
 
-  constructor(private ServicioM : WindmillsService, private ServicioP : PartsService){
+  constructor(private ServicioM : WindmillsService, private ServicioP : PartsService, public modal : NgbModal){
   }
 
  ngOnInit(): void {
@@ -27,12 +28,12 @@ export class DragNDropComponent implements OnInit{
   this.ServicioP.getPart().subscribe(partList => this.todo = partList);
  }
   submit(){
-    //if(this.nombre != "" && this.descripcion != "" && this.enProceso.length == 3){
-      let nuevoMolino = new Molino(this.enProceso[0],this.enProceso[1],this.enProceso[2], "Sopas", "Sopass")
+    if(this.nombre != "" && this.descripcion != "" && this.enProceso.length == 3){
+      let nuevoMolino = new Molino(this.enProceso[0],this.enProceso[1],this.enProceso[2], this.nombre, this.descripcion)
       this.ServicioM.createWindmill(nuevoMolino).subscribe();
       this.vaciarParametros();
       this.vaciarLista();
-    //}
+    }
 
   }
   vaciarParametros(){

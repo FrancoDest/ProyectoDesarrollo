@@ -1,3 +1,6 @@
+.drag-and-drop{
+  margin-left: auto; margin-right: auto; text-align: center;
+}
 .drag-container {
     width: 400px;
     max-width: 100%;
@@ -55,3 +58,8 @@
   .imagen{
     width: 100px;
   }
+.Drag-boton{
+  font-weight: 600;
+  font-size: 20px;
+  text-decoration: none;
+}

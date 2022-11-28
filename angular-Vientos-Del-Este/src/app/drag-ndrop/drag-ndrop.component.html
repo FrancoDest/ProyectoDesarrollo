@@ -1,3 +1,4 @@
+<div class="drag-and-drop">
 <div class="drag-container">
 
   <h2>Componentes</h2>
@@ -19,4 +20,34 @@
   </div>
 </div>
 
-<button class="Drag-boton" (click)="submit()">Submit</button>
+<button class="Drag-boton" (click)="modal.open(contenido)">Submit</button>
+</div>
+
+<ng-template #contenido let-modal>
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title"> ¿Que nombre desea agregarle a su molino?</h4>
+              <button class="close" aria-label="close" type="button" (click)="modal.dismiss()">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <div class="mb-3">
+                  <label for="recipient-nombre" class="col-form-label">Ingrese un nombre para su modelo:
+                      <input type="text" class="form-control" [(ngModel)]="nombre">
+                  </label>
+              </div>
+              <div class="mb-3">
+                  <label for="recipient-descripcion" class="col-form-label">Ingrese una breve descripcion:
+                      <input type="text" class="form-control"[(ngModel)]="descripcion">
+                  </label>
+              </div>
+          </div>
+          <div class="modal-footer">
+              <button id="submit" type="button" class="btn btn-success" (click)="modal.close()" (click)="submit()"
+                  data-target="#modalForm">OK!</button>
+          </div>
+      </div>
+  </div>
+</ng-template>

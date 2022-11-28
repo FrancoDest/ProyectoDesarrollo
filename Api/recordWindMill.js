@@ -1,5 +1,5 @@
 const express = require('express');
-
+const { ObjectId } = require('mongodb');
 // recordRoutes is an instance of the express router.
 // We use it to define our routes.
 // The router will be added as a middleware and will take control of requests starting with path /listings.
@@ -29,27 +29,9 @@ recordRoutes.route('/Molinos').get(async function (_req, res) {
 recordRoutes.route('/Molinos').post(function (req, res) {
   const dbConnect = dbo.getDb();
   const matchDocument = {
-    Base : {
-      Categoria: req.body.Base.Categoria,
-      Foto: req.body.Base.Foto,
-      Altura: req.body.Base.Altura,
-      ResistenciaEolica: req.body.Base.ResistenciaEolica,
-      Material: req.body.Base.Material
-    },
-    Cuerpo : {
-      Categoria: req.body.Cuerpo.Categoria,
-      Foto: req.body.Cuerpo.Foto,
-      Altura: req.body.Cuerpo.Altura,
-      ResistenciaEolica: req.body.Cuerpo.ResistenciaEolica,
-      Material: req.body.Cuerpo.Material
-    },
-    Aspa : {
-      Categoria: req.body.Aspa.Categoria,
-      Foto: req.body.Aspa.Foto,
-      Altura: req.body.Aspa.Altura,
-      ResistenciaEolica: req.body.Aspa.ResistenciaEolica,
-      Material: req.body.Aspa.Material
-    },
+    Aspa : req.body.Aspa,
+    Cuerpo : req.body.Cuerpo,
+    Base : req.body.Base,
     Nombre: req.body.Nombre,
     Descripcion: req.body.Descripcion,
     estado : req.body.estado
@@ -67,72 +49,47 @@ recordRoutes.route('/Molinos').post(function (req, res) {
     });
 });
 
-// This section will help you update a Windmill by id.
-recordRoutes.route('/Molinos/Update').post(function (req, res) {
+// Aprobado de Molinos.
+recordRoutes.route('/Molinos/aprobar').put(function (req, res) {
   const dbConnect = dbo.getDb();
-  const listingQuery = { _id: req.body.id };
+  const listingQuery = { _id: new ObjectId(req.body._id) };
   const updates = {
-    $Set: {
-      Nombre: req.body.Nombre,
-      Descripcion: req.body.Descripcion,
-      ResistenciaEolica : req.body.ResistenciaEolica,
-      Estado :req.body.Estado
-    },
+    $set: {
+      estado: req.body.estado
+    }
   };
-
+  console.log(listingQuery);
   dbConnect
     .collection('Molinos')
     .updateOne(listingQuery, updates, function (err, _result) {
       if (err) {
         res
           .status(400)
-          .send(`Error updating likes on listing with id ${listingQuery.id}!`);
+          .send(`Error updating user with id ${listingQuery._id}!`);
       } else {
-        console.log('1 document updated');
+        console.log(_result);
+        res.status(204).send();
       }
     });
 });
-
-// Aprobado de Molinos.
-recordRoutes.route('/Usuarios/Approve').post(function (req, res) {
-  const dbConnect = dbo.getDb();
-  const listingQuery = { _id: req.body.id };
-  const updates = {
-    $inc: {
-      Estado: "True",
-    },
-  };
-    dbConnect
-    .collection('Molinos')
-    .updateOne(listingQuery, disapprove, function (err, _result) {
-      if (err) {
-        res
-          .status(400)
-          .send(`Error Approving id ${listingQuery.id}!`);
-      } else {
-        console.log('1 Windmill Aprooved');
-      }
-    });
-  }
-  );
   // Aprobado de Molinos.
-recordRoutes.route('/Usuarios/Disapprove').post(function (req, res) {
+recordRoutes.route('/Molinos/rechazar').put(function (req, res) {
   const dbConnect = dbo.getDb();
-  const listingQuery = { _id: req.body.id };
+  const listingQuery = { _id: new ObjectId(req.body._id) };
   const updates = {
-    $inc: {
-      Estado: "False",
-    },
+    $set: {
+      estado: req.body.estado
+    }
   };
     dbConnect
     .collection('Molinos')
-    .updateOne(listingQuery, disapprove, function (err, _result) {
+    .updateOne(listingQuery, updates, function (err, _result) {
       if (err) {
         res
           .status(400)
           .send(`Error Disapproving id ${listingQuery.id}!`);
       } else {
-        console.log('1 Windmill Disapproved');
+        console.log(_result);
       }
     });
   }

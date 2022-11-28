@@ -9,12 +9,12 @@ export interface Partes{
     Material : String;
 }
 export class Partes implements Partes{
-    constructor(nuevaCategoria: string, nuevaAltura: Number, nuevaRE: Number, nuevaMat: string)
+    constructor(nuevaCategoria: string, nuevaAltura: Number, nuevaRE: Number, nuevaMat: string, nuevafoto: string)
     {
         this.Categoria= nuevaCategoria;
         this.Altura= nuevaAltura;
         this.ResistenciaEolica= nuevaRE;
-        this.Foto="assets/aspaAluminio.png"
+        this.Foto= nuevafoto;
         this.Material= nuevaMat;
     }
 
