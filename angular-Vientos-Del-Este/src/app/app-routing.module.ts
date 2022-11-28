@@ -8,7 +8,6 @@ import { MolinoListasComponent } from './molino-listas/molino-listas.component';
 
 
 const routes: Routes = [ 
-  { path: 'Login' , component: LoginComponent},
   { path: 'Usuarios' , component: ModuloUsuarioComponent},
   { path: 'Armador', component: DragNDropComponent},
   { path: '' , component: LoginComponent},

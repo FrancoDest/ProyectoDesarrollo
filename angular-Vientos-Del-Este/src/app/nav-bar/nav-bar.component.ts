@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-nav-bar',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router : Router, public modal : NgbModal) { }
 
   ngOnInit(): void {
   }
-
+  login(){
+    localStorage.clear();
+    this.router.navigateByUrl('');
+  }
 }

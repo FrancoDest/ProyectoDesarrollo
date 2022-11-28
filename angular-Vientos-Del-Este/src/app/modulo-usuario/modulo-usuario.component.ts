@@ -33,7 +33,7 @@ export class ModuloUsuarioComponent implements OnInit {
   createUsuario() {
     if (this.nombre != "" && this.clase != "") {
       let nuevoUsuario = new Usuarios(this.nombre, this.clase, this.nombre);
-      this.Servicio.createUser(nuevoUsuario).subscribe(usuario => { this.userList.push(nuevoUsuario); })
+      this.Servicio.createUser(nuevoUsuario).subscribe(usuario => {  this.userList.push(nuevoUsuario); })
       this.vaciar();
     }
   }

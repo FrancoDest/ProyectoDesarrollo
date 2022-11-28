@@ -7,7 +7,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" routerLink="/Login">Login</a>
+            <a class="nav-link" (click)="modal.open(contenido)">Login</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" routerLink="/Molino" tabindex="-1">Molinos</a>
@@ -25,4 +25,19 @@
       </div>
     </div>
   </nav>
-  
+  <ng-template #contenido let-modal>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"> ¿Desea cerrar sesion?</h4>
+                <button class="close" aria-label="close" type="button" (click)="modal.dismiss()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+                <button id="submit" type="button" class="btn btn-success" (click)="modal.close()" (click)="login()"
+                    data-target="#modalForm">Si</button>
+              <button id="submit" type="button" class="btn btn-success" (click)="modal.close()"
+                  data-target="#modalForm">No</button>
+          </div>
+    </div>
+  </ng-template>

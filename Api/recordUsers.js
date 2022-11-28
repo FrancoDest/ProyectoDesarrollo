@@ -1,5 +1,6 @@
 const express = require('express');
 const { ObjectId } = require('mongodb');
+const jwt = require('jsonwebtoken')
 
 // recordRoutes is an instance of the express router.
 // We use it to define our routes.
@@ -31,9 +32,9 @@ recordRoutes.route('/Usuarios').post(function (req, res) {
   const dbConnect = dbo.getDb();
   const matchDocument = {
     Nombre: req.body.Nombre,
-    Clase : req.body.Clase,
-    Contrasena : req.body.Contrasena,
-    Estado : req.body.estado
+    Clase: req.body.Clase,
+    Contrasena: req.body.Contrasena,
+    Estado: req.body.Estado
   };
 
   dbConnect
@@ -117,6 +118,41 @@ recordRoutes.route('/Usuarios/:_id').delete(function (req, res) {
       }
     });
 });
+recordRoutes.route('/Usuarios/Login').post(async function (_req, res) {
 
+  const dbConnect = dbo.getDb();
+  const objective = {
+    "Nombre": _req.body.nombre,
+    "Contrasena": _req.body.contrasena
+  };
+  dbConnect
+    .collection('usuarios')
+    .findOne(objective, function (err, _result) {
+      if (err) {
+        res
+          .status(400)
+          .send(`Error finding user with name ${_req.body.nombre}!`);
+      } else {
+        if (_result != null) {
+          if (_result.Estado != false) {//Se que es inecesario el != false pero lo hago para que se entienda mas facil el codigo
+            jwt.sign({ _result }, 'secretkey', function (err, token) {
+              res.json({
+                token : token,
+                clase :_result.Clase
+              })
+              console.log(token);
+              res.status(204).send();
+            });
+          } else {
+            res.status(403).send();
+          }
+        } else {
+          res.status(403).send();
+        }
+
+      }
+    });
+
+});
 
 module.exports = recordRoutes;

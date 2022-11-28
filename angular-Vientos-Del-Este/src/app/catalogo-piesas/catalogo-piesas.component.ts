@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Partes } from '../Partes';
 import { PartsService } from '../Servicios/parts.service';
-
+import { catchError, map, tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-catalogo-piesas',
@@ -19,6 +19,8 @@ export class CatalogoPiesasComponent implements OnInit {
   nuevaAltura = 0;
   nuevaRE = 0;
   nuevaMat = "";
+
+  hayError= "";
 
   constructor(//private Servicio : ComponentService,
     public modal: NgbModal, public Service: PartsService

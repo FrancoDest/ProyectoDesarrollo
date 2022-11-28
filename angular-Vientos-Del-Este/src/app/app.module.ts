@@ -11,8 +11,9 @@ import { DragNDropComponent } from './drag-ndrop/drag-ndrop.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { CatalogoPiesasComponent } from './catalogo-piesas/catalogo-piesas.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MolinoListasComponent } from './molino-listas/molino-listas.component';
+import { AuthInterceptorService } from './Servicios/auth-interceptor.service';
 
 
 @NgModule({
@@ -34,7 +35,11 @@ import { MolinoListasComponent } from './molino-listas/molino-listas.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
