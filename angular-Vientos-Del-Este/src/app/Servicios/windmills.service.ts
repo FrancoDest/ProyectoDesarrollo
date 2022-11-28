@@ -19,10 +19,17 @@ export class WindmillsService {
 
     /** GET Molino from the server */
   getWindmill(): Observable<Molino[]> {
-    return this.http.get<Molino[]>(this.WindmillUrl, this.httpOptions);
+    return this.http.get<Molino[]>(this.WindmillUrl);
   }
   
   createWindmill(molino : Molino){
     return this.http.post<Molino>(this.WindmillUrl, molino, this.httpOptions);
+  }///Disapprove
+
+  approveWindmill(molino : Molino){
+    return this.http.put<Molino>(this.WindmillUrl + '/aprobar', molino, this.httpOptions);
+  }
+  disapproveWindmill(molino : Molino  ){
+    return this.http.put<Molino>(this.WindmillUrl + '/rechazar', molino, this.httpOptions);
   }
 }

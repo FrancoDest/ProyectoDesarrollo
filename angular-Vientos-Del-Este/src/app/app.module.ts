@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { ModuloUsuarioComponent } from './modulo-usuario/modulo-usuario.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ModuloBienvenidaComponent } from './modulo-bienvenida/modulo-bienvenida.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DragNDropComponent } from './drag-ndrop/drag-ndrop.component';
@@ -21,8 +20,6 @@ import { MolinoListasComponent } from './molino-listas/molino-listas.component';
     AppComponent,
     LoginComponent,
     ModuloUsuarioComponent,
-    ModuloBienvenidaComponent,
-    //ModuloMolinoComponent,
     NavBarComponent,
     DragNDropComponent,
     CatalogoPiesasComponent,

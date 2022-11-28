@@ -1,1 +1,79 @@
-<p>molino-listas works!</p>
+<div class="container-xl">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h2>Administracion Molinos</h2>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Aspa</th>
+                        <th>Cuerpo</th>
+                        <th>Base</th>
+                        <th>Nombre</th>
+                        <th>Descripcion</th>
+                        <th>Estado</th>
+                        <th>Gestion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let moli of penndingList">
+                        <td> <img src={{moli.Aspa.Foto}} alt="" width="50px" height="50px"></td>
+                        <td> <img src={{moli.Cuerpo.Foto}} alt="" width="50px" height="50px"></td>
+                        <td> <img src={{moli.Base.Foto}} alt="" width="50px" height="50px"></td>
+                        <td> {{ moli.Nombre }} </td>
+                        <td> {{ moli.Descripcion }} </td>
+                        <td> {{ moli.estado }} </td>
+                        <td>
+                            <button class="Aprobar" title="Aprobar" data-toggle="Delete"
+                                (click)="aprobar(moli)">Aprobar</button>
+                            <button class="Rechazar" title="Rechazar" data-toggle="Rechazar" (click)="temporal(moli)"
+                                (click)="modal.open(confirmacion)">Rechazar</button>
+                        </td>
+                    </tr>
+                    <tr *ngFor="let moli of approbedList">
+                        <td> <img src={{moli.Aspa.Foto}} alt="" width="50px" height="50px">
+                        <td><img src={{moli.Cuerpo.Foto}} alt="" width="50px" height="50px">
+                        <td><img src={{moli.Base.Foto}} alt="" width="50px" height="50px">
+                        <td> {{ moli.Nombre }} </td>
+                        <td> {{ moli.Descripcion }} </td>
+                        <td> {{ moli.estado }} </td>
+                        <td> <img src="assets/tick.png" alt="" width="50px" height="50px"></td>
+                    </tr>
+                    <tr *ngFor="let moli of disapprobedList">
+                        <td> <img src={{moli.Aspa.Foto}} alt="" width="50px" height="50px">
+                        <td><img src={{moli.Cuerpo.Foto}} alt="" width="50px" height="50px">
+                        <td><img src={{moli.Base.Foto}} alt="" width="50px" height="50px">
+                        <td> {{ moli.Nombre }} </td>
+                        <td> {{ moli.Descripcion }} </td>
+                        <td> {{ moli.estado }} </td>
+                        <td> <img src="assets/equis.png" alt="" width="50px" height="50px"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="clearfix">
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<ng-template #confirmacion let-modal>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"> ¿Esta seguro que desea eliminar este componente?</h4>
+                <button class="close" aria-label="close" type="button" (click)="modal.dismiss()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" (click)="modal.close()" (click)="rechazar()">Si</button>
+                <button type="button" class="btn btn-success" (click)="modal.close()">No</button>
+            </div>
+        </div>
+    </div>
+</ng-template>
