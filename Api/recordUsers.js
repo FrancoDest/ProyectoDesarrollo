@@ -89,7 +89,7 @@ recordRoutes.route('/Usuarios').put(function (req, res) {
           .status(400)
           .send(`Error updating user with id ${listingQuery._id}!`);
       } else {
-        console.log(_result);
+        console.log("Clase actualizada correctamente");
         res.status(204).send();
       }
     });
@@ -113,7 +113,7 @@ recordRoutes.route('/Usuarios/:_id').delete(function (req, res) {
           .status(400)
           .send(`Error Deleting user with id ${listingQuery._id}!`);
       } else {
-        console.log(_result);
+        console.log("El usuario seleccionado a sido borrado");
         res.status(204).send();
       }
     });
@@ -140,7 +140,6 @@ recordRoutes.route('/Usuarios/Login').post(async function (_req, res) {
                 token : token,
                 clase :_result.Clase
               })
-              console.log(token);
               res.status(204).send();
             });
           } else {

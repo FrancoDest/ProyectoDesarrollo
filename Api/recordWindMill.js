@@ -26,7 +26,7 @@ recordRoutes.route('/Molinos').get(async function (_req, res) {
 });
 
 // This section will help you create a new Windmill.
-recordRoutes.route('/Molinos').post(function (req, res) {
+recordRoutes.route('/Molino').post(function (req, res) {
   const dbConnect = dbo.getDb();
   const matchDocument = {
     Aspa : req.body.Aspa,
@@ -58,7 +58,6 @@ recordRoutes.route('/Molinos/aprobar').put(function (req, res) {
       estado: req.body.estado
     }
   };
-  console.log(listingQuery);
   dbConnect
     .collection('Molinos')
     .updateOne(listingQuery, updates, function (err, _result) {
@@ -67,7 +66,7 @@ recordRoutes.route('/Molinos/aprobar').put(function (req, res) {
           .status(400)
           .send(`Error updating user with id ${listingQuery._id}!`);
       } else {
-        console.log(_result);
+        console.log("Molino aprobado");
         res.status(204).send();
       }
     });
@@ -89,7 +88,7 @@ recordRoutes.route('/Molinos/rechazar').put(function (req, res) {
           .status(400)
           .send(`Error Disapproving id ${listingQuery.id}!`);
       } else {
-        console.log(_result);
+        console.log("Molino no aprobado");
       }
     });
   }

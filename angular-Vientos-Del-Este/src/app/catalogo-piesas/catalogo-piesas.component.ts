@@ -20,7 +20,6 @@ export class CatalogoPiesasComponent implements OnInit {
   nuevaRE = 0;
   nuevaMat = "";
 
-  hayError= "";
 
   constructor(//private Servicio : ComponentService,
     public modal: NgbModal, public Service: PartsService

@@ -45,7 +45,6 @@ export class MolinoListasComponent implements OnInit {
       this.penndingList = this.penndingList.filter(m => m != rechazado[0]);
       rechazado[0].estado = "Rechazado";
       this.disapprobedList.concat(rechazado[0]);
-      console.log(this.disapprobedList.length)
       this.Service.disapproveWindmill(this.molinoARechazar).subscribe();
 
     }

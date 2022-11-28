@@ -25,9 +25,9 @@ export class WindmillsService {
   }
   
   createWindmill(molino : Molino){
-    return this.http.post<Molino>(this.WindmillUrl, molino, this.httpOptions).pipe(
-      catchError(this.HandleError<Molino>()));
-  }///Disapprove
+    return this.http.post<Molino>('http://localhost:5000/Molino', molino, this.httpOptions).pipe(
+      catchError(this.HandleError<Molino>()));//Tiene otra url para que pueda acceder a el, los Operarios
+  }
 
   approveWindmill(molino : Molino){
     return this.http.put<Molino>(this.WindmillUrl + '/aprobar', molino, this.httpOptions).pipe(
