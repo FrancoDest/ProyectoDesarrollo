@@ -12,7 +12,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 })
 export class MolinoListasComponent implements OnInit {
 
-  penndingList: Molino[] = [];
+  penndingList: Molino[] = [];//Creo 3 listas para que sea mas facil que aparescan ordenadas y en un principio era para que tuvieran colores distintos
   approbedList: Molino[] = [];
   disapprobedList: Molino[] = [];
 

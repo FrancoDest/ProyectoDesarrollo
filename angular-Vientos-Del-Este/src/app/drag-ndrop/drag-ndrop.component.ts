@@ -40,7 +40,7 @@ export class DragNDropComponent implements OnInit{
     this.nombre="";
     this.descripcion="";
   }
-  vaciarLista(){
+  vaciarLista(){//Se utiliza para vaciar la lista donde estan las partes del molino y agregar dichas partes a la lista de componentes/partes general
     let TamañoLista= this.enProceso.length -1 ;
 
     while( TamañoLista != -1){

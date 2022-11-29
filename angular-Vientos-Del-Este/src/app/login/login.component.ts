@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
     const clase = resp.clase
       localStorage.setItem("token", token);
       localStorage.setItem("clase", clase);
-      switch(clase){
+      switch(clase){//Lo utilizo para que cada usuario tenga una redireccion distinta para que todos puedan cumplir su función
         case "Administrador": 
         this.router.navigateByUrl('/Usuarios');
         break;

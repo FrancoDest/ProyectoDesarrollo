@@ -1,14 +1,10 @@
 const express = require('express');
 const { ObjectId } = require('mongodb');
-// recordRoutes is an instance of the express router.
-// We use it to define our routes.
-// The router will be added as a middleware and will take control of requests starting with path /listings.
 const recordRoutes = express.Router();
 
-// This will help us connect to the database
 const dbo = require('./conn');
 
-// This section will help you get a list of all the Windmill.
+// Para obtener los molinos de la base de datos
 recordRoutes.route('/Molinos').get(async function (_req, res) {
   const dbConnect = dbo.getDb();
 
@@ -25,7 +21,7 @@ recordRoutes.route('/Molinos').get(async function (_req, res) {
     });
 });
 
-// This section will help you create a new Windmill.
+// Para agregar un nuevo molino a la bd
 recordRoutes.route('/Molino').post(function (req, res) {
   const dbConnect = dbo.getDb();
   const matchDocument = {
@@ -49,7 +45,7 @@ recordRoutes.route('/Molino').post(function (req, res) {
     });
 });
 
-// Aprobado de Molinos.
+//Para aprobar de Molinos.
 recordRoutes.route('/Molinos/aprobar').put(function (req, res) {
   const dbConnect = dbo.getDb();
   const listingQuery = { _id: new ObjectId(req.body._id) };
@@ -71,7 +67,7 @@ recordRoutes.route('/Molinos/aprobar').put(function (req, res) {
       }
     });
 });
-  // Aprobado de Molinos.
+  // Para rechazar de Molinos.
 recordRoutes.route('/Molinos/rechazar').put(function (req, res) {
   const dbConnect = dbo.getDb();
   const listingQuery = { _id: new ObjectId(req.body._id) };

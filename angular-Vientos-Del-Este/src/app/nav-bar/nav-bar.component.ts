@@ -13,7 +13,7 @@ export class NavBarComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  login(){
+  login(){//Lo cree para que haya un metodo para cerrar sesión
     localStorage.clear();
     this.router.navigateByUrl('');
   }
