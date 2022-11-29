@@ -42,7 +42,7 @@ export class UsersService {
   }
   private HandleError<T>( result?: T){
     return (error : any) : Observable<T> => {
-      return of (result as T)
+      return of(result as T);
     }
   }
 }
