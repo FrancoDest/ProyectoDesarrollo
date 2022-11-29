@@ -51,15 +51,11 @@ export class ModuloUsuarioComponent implements OnInit {
     }
   }
   updateClass(user: Usuarios) {
-    //if (this.clase != ""){
     let usuarioT = this.userList.filter(p => p == user);
     usuarioT[0].Clase = this.clase;
     this.Servicio.updateUser(usuarioT[0]).subscribe();
-
-    //this.vaciar();
-    //}
   }
-  modificarUsuario(user: Usuarios) {
+  modificarUsuario(user: Usuarios) {//Utilizo la funcion en el html para guardar el usuario que quiero modificar antes de utilizar el modal, para recordarlo al cerrarlo
     this.usuarioTemp = user;
   }
 

@@ -1,14 +1,10 @@
 const express = require('express');
 
-// recordRoutes is an instance of the express router.
-// We use it to define our routes.
-// The router will be added as a middleware and will take control of requests starting with path /listings.
 const recordRoutes = express.Router();
 
-// This will help us connect to the database
 const dbo = require('./conn');
 
-// This section will help you get a list of all the parts.
+//Para levantar las partes de la base de datos
 recordRoutes.route('/Partes').get(async function (_req, res) {
   const dbConnect = dbo.getDb();
 
@@ -25,7 +21,7 @@ recordRoutes.route('/Partes').get(async function (_req, res) {
     });
 });
 
-// This section will help you create a new part.
+//Para agregar una parte a la bd
 recordRoutes.route('/Partes').post( function (req, res) {
   const dbConnect = dbo.getDb();
   const parte = {
@@ -49,7 +45,7 @@ recordRoutes.route('/Partes').post( function (req, res) {
 });
 
 
-// This section will help you logicaly delete a part.
+// Para borrar logicamente una parte
 recordRoutes.route('/Partes/:_id').delete((req, res) => {
   const dbConnect = dbo.getDb();
   const listingQuery = { listing_id: req.body._id };

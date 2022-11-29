@@ -1,15 +1,12 @@
 const express = require('express');
 const { ObjectId } = require('mongodb');
+const jwt = require('jsonwebtoken')
 
-// recordRoutes is an instance of the express router.
-// We use it to define our routes.
-// The router will be added as a middleware and will take control of requests starting with path /listings.
 const recordRoutes = express.Router();
 
-// This will help us connect to the database
 const dbo = require('./conn');
 
-// This section will help you get a list of all the records.
+// Para obtener toods los usuarios de la base de datos
 recordRoutes.route('/Usuarios').get(async function (_req, res) {
   const dbConnect = dbo.getDb();
 
@@ -26,14 +23,14 @@ recordRoutes.route('/Usuarios').get(async function (_req, res) {
     });
 });
 
-// This section will help you create a new record.
+// Para crear un usuario
 recordRoutes.route('/Usuarios').post(function (req, res) {
   const dbConnect = dbo.getDb();
   const matchDocument = {
     Nombre: req.body.Nombre,
-    Clase : req.body.Clase,
-    Contrasena : req.body.Contrasena,
-    Estado : req.body.estado
+    Clase: req.body.Clase,
+    Contrasena: req.body.Contrasena,
+    Estado: req.body.Estado
   };
 
   dbConnect
@@ -47,7 +44,7 @@ recordRoutes.route('/Usuarios').post(function (req, res) {
       }
     });
 });
-// This section will help you update a password by id.
+// Para recuperar la contraseña, (Para futuro si hago lo de enviar al mail)
 recordRoutes.route('/Usuarios/Recuperacion').post(function (req, res) {
   const dbConnect = dbo.getDb();
   const listingQuery = { _id: req.body._id };
@@ -71,7 +68,7 @@ recordRoutes.route('/Usuarios/Recuperacion').post(function (req, res) {
     });
 });
 
-// This section will help you update a class by id.
+// Para actualizar la clase del usuario
 recordRoutes.route('/Usuarios').put(function (req, res) {
   const dbConnect = dbo.getDb();
   const listingQuery = { _id: new ObjectId(req.body._id) };
@@ -88,7 +85,7 @@ recordRoutes.route('/Usuarios').put(function (req, res) {
           .status(400)
           .send(`Error updating user with id ${listingQuery._id}!`);
       } else {
-        console.log(_result);
+        console.log("Clase actualizada correctamente");
         res.status(204).send();
       }
     });
@@ -112,30 +109,45 @@ recordRoutes.route('/Usuarios/:_id').delete(function (req, res) {
           .status(400)
           .send(`Error Deleting user with id ${listingQuery._id}!`);
       } else {
-        console.log(_result);
+        console.log("El usuario seleccionado a sido borrado");
         res.status(204).send();
       }
     });
 });
+//Para que el usuario obtenga su token si se logea correctamente
+recordRoutes.route('/Usuarios/Login').post(async function (_req, res) {
 
-// This section will help chek if the user exist.
-recordRoutes.route('/Usuarios/login').post(function (req, res) {
   const dbConnect = dbo.getDb();
-  const userid = req.body.username;
-  const contrasenia = req.body.password;
-
-  dbConnect.collection('usuarios')
-    .find({},{projection: {nombre: userid, contrasena:contrasenia}}).toArray(function(err,_result){
+  const objective = {
+    "Nombre": _req.body.nombre,
+    "Contrasena": _req.body.contrasena
+  };
+  dbConnect
+    .collection('usuarios')
+    .findOne(objective, function (err, _result) {
       if (err) {
         res
           .status(400)
-          .send(`Error updating user with id ${listingQuery.id}!`);
+          .send(`Error finding user with name ${_req.body.nombre}!`);
       } else {
-        console.log(_result);
-        res.status(204).send();
+        if (_result != null) {
+          if (_result.Estado) {
+            jwt.sign({ _result }, 'secretkey', function (err, token) {
+              res.json({
+                token : token,
+                clase :_result.Clase
+              })
+              res.status(204).send();
+            });
+          } else {
+            res.status(403).send();
+          }
+        } else {
+          res.status(403).send();
+        }
+
       }
     });
+
 });
-
-
 module.exports = recordRoutes;

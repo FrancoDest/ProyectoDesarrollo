@@ -80,14 +80,17 @@
                                 El Material es requerido.
                             </div>
                         </div>
-                        
-
                     </label>
-                    
+                </div>
+                <div class="mb-3">
+                    <label for="recipient-mat" class="col-form-label">Inserte la imagen para su componente
+                        <input type="file" (change)="handleUpload($event)">
+                    </label>
+                
                 </div>
             </div>
             <div class="modal-footer">
-                <button id="submit" type="button" class="btn btn-success" (click)="modal.close()" (click)="controladorCreacion()"
+                <button id="submit" type="button" class="btn btn-success" (click)="modal.close()" (click)="crearParte()"
                     data-target="#modalForm">OK!</button>
             </div>
         </div>

@@ -1,14 +1,10 @@
 const express = require('express');
 const { ObjectId } = require('mongodb');
-// recordRoutes is an instance of the express router.
-// We use it to define our routes.
-// The router will be added as a middleware and will take control of requests starting with path /listings.
 const recordRoutes = express.Router();
 
-// This will help us connect to the database
 const dbo = require('./conn');
 
-// This section will help you get a list of all the Windmill.
+// Para obtener los molinos de la base de datos
 recordRoutes.route('/Molinos').get(async function (_req, res) {
   const dbConnect = dbo.getDb();
 
@@ -25,8 +21,8 @@ recordRoutes.route('/Molinos').get(async function (_req, res) {
     });
 });
 
-// This section will help you create a new Windmill.
-recordRoutes.route('/Molinos').post(function (req, res) {
+// Para agregar un nuevo molino a la bd
+recordRoutes.route('/Molino').post(function (req, res) {
   const dbConnect = dbo.getDb();
   const matchDocument = {
     Aspa : req.body.Aspa,
@@ -49,7 +45,7 @@ recordRoutes.route('/Molinos').post(function (req, res) {
     });
 });
 
-// Aprobado de Molinos.
+//Para aprobar de Molinos.
 recordRoutes.route('/Molinos/aprobar').put(function (req, res) {
   const dbConnect = dbo.getDb();
   const listingQuery = { _id: new ObjectId(req.body._id) };
@@ -58,7 +54,6 @@ recordRoutes.route('/Molinos/aprobar').put(function (req, res) {
       estado: req.body.estado
     }
   };
-  console.log(listingQuery);
   dbConnect
     .collection('Molinos')
     .updateOne(listingQuery, updates, function (err, _result) {
@@ -67,12 +62,12 @@ recordRoutes.route('/Molinos/aprobar').put(function (req, res) {
           .status(400)
           .send(`Error updating user with id ${listingQuery._id}!`);
       } else {
-        console.log(_result);
+        console.log("Molino aprobado");
         res.status(204).send();
       }
     });
 });
-  // Aprobado de Molinos.
+  // Para rechazar de Molinos.
 recordRoutes.route('/Molinos/rechazar').put(function (req, res) {
   const dbConnect = dbo.getDb();
   const listingQuery = { _id: new ObjectId(req.body._id) };
@@ -89,7 +84,7 @@ recordRoutes.route('/Molinos/rechazar').put(function (req, res) {
           .status(400)
           .send(`Error Disapproving id ${listingQuery.id}!`);
       } else {
-        console.log(_result);
+        console.log("Molino no aprobado");
       }
     });
   }

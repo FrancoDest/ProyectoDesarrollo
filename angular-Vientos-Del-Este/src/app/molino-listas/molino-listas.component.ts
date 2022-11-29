@@ -12,7 +12,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 })
 export class MolinoListasComponent implements OnInit {
 
-  penndingList: Molino[] = [];
+  penndingList: Molino[] = [];//Creo 3 listas para que sea mas facil que aparescan ordenadas y en un principio era para que tuvieran colores distintos
   approbedList: Molino[] = [];
   disapprobedList: Molino[] = [];
 
@@ -45,7 +45,6 @@ export class MolinoListasComponent implements OnInit {
       this.penndingList = this.penndingList.filter(m => m != rechazado[0]);
       rechazado[0].estado = "Rechazado";
       this.disapprobedList.concat(rechazado[0]);
-      console.log(this.disapprobedList.length)
       this.Service.disapproveWindmill(this.molinoARechazar).subscribe();
 
     }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { Molino } from '../Molino';
+import { catchError, map, tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -19,17 +20,26 @@ export class WindmillsService {
 
     /** GET Molino from the server */
   getWindmill(): Observable<Molino[]> {
-    return this.http.get<Molino[]>(this.WindmillUrl);
+    return this.http.get<Molino[]>(this.WindmillUrl).pipe(
+      catchError(this.HandleError<Molino[]>([])));
   }
   
   createWindmill(molino : Molino){
-    return this.http.post<Molino>(this.WindmillUrl, molino, this.httpOptions);
-  }///Disapprove
+    return this.http.post<Molino>('http://localhost:5000/Molino', molino, this.httpOptions).pipe(
+      catchError(this.HandleError<Molino>()));//Tiene otra url para que pueda acceder a el, los Operarios
+  }
 
   approveWindmill(molino : Molino){
-    return this.http.put<Molino>(this.WindmillUrl + '/aprobar', molino, this.httpOptions);
+    return this.http.put<Molino>(this.WindmillUrl + '/aprobar', molino, this.httpOptions).pipe(
+      catchError(this.HandleError<Molino>()));
   }
   disapproveWindmill(molino : Molino  ){
-    return this.http.put<Molino>(this.WindmillUrl + '/rechazar', molino, this.httpOptions);
+    return this.http.put<Molino>(this.WindmillUrl + '/rechazar', molino, this.httpOptions).pipe(
+      catchError(this.HandleError<Molino>()));
+  }
+  private HandleError<T>( result?: T){
+    return (error : any) : Observable<T> => {
+      return of (result as T)
+    }
   }
 }

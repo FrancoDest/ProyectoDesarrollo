@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup,FormBuilder,Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../Servicios/auth-service.service';
-//import { UsuariosService } from '../Servicios/usuarios.service';
-
-
+import { AuthService } from '../Servicios/auth.service';
 
 
 @Component({
@@ -16,13 +12,48 @@ export class LoginComponent implements OnInit {
   username= "";
   password= "";
 
-  constructor( 
-    private authService: AuthService, 
-    private router: Router) {
+  nombre = "";
+  
+  contrasena= "";
+  constructor(
+    private authService: AuthService, private router : Router) {}
 
-   }
+
 
   ngOnInit(): void {
+    
+  } 
+  
+  login() {
+    if(this.nombre != "" && this.contrasena != ""){
+    const user ={
+      nombre: this.nombre,
+      contrasena: this.contrasena
+    };
+    
+    this.authService.login(user).subscribe(resp => this.token(resp))
+    this.vaciar();}
+  }
+  vaciar(){
+    this.nombre="";
+    this.contrasena="";
+  }
+  token(resp : any){
+    const token = resp.token;
+    const clase = resp.clase
+      localStorage.setItem("token", token);
+      localStorage.setItem("clase", clase);
+      switch(clase){//Lo utilizo para que cada usuario tenga una redireccion distinta para que todos puedan cumplir su función
+        case "Administrador": 
+        this.router.navigateByUrl('/Usuarios');
+        break;
+        case "Operario": 
+        this.router.navigateByUrl('/Piezas');
+        break;
+        case "Auditor": 
+        this.router.navigateByUrl('/Molino');
+        break;
+      }
   }
   login(): void{
     
@@ -37,5 +68,7 @@ export class LoginComponent implements OnInit {
     
  
   }
+
+
 
 }
