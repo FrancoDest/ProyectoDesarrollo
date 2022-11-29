@@ -150,5 +150,4 @@ recordRoutes.route('/Usuarios/Login').post(async function (_req, res) {
     });
 
 });
-
 module.exports = recordRoutes;

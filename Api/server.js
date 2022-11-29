@@ -77,6 +77,7 @@ app.use(require('./recordUsers'));
 app.use(require('./recordWindMill'));
 app.use(require('./recordParts'));
 
+
 app.post('/uploadBase64', (req,res) => {//Dejo el post aqui porque necesito lo del tamaño limite del body parser y poniendolo en un sub archivo no encontre forma de que andara este limite
   console.log("aca")
   let filePath= '../angular-Vientos-Del-Este/src/assets/' + req.body.name
@@ -88,6 +89,7 @@ app.post('/uploadBase64', (req,res) => {//Dejo el post aqui porque necesito lo d
 app.get('/', (req, res) => {
   res.status(200).send('Hello people!' + process.env.HOST);
 });
+
 // Global error handling
 app.use(function (err, _req, res) {
   console.error(err.stack);

@@ -2,18 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../Servicios/auth.service';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  username= "";
+  password= "";
 
   nombre = "";
   
   contrasena= "";
   constructor(
     private authService: AuthService, private router : Router) {}
+
 
 
   ngOnInit(): void {
@@ -50,6 +54,19 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl('/Molino');
         break;
       }
+  }
+  login(): void{
+    
+      this.authService.login(this.username, this.password)
+      .subscribe(
+        ()=>{
+          console.log("user is logged in");
+          //this.router.navigateByUrl('/');
+        }
+      );
+      
+    
+ 
   }
 
 
