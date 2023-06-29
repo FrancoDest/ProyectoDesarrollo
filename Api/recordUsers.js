@@ -11,7 +11,7 @@ recordRoutes.route('/Usuarios').get(async function (_req, res) {
   const dbConnect = dbo.getDb();
 
   dbConnect
-    .collection('usuarios')
+    .collection('Usuarios')
     .find({})
     .limit(50)
     .toArray(function (err, result) {
@@ -34,7 +34,7 @@ recordRoutes.route('/Usuarios').post(function (req, res) {
   };
 
   dbConnect
-    .collection('usuarios')
+    .collection('Usuarios')
     .insertOne(matchDocument, function (err, result) {
       if (err) {
         res.status(400).send('Error inserting user!');
@@ -55,7 +55,7 @@ recordRoutes.route('/Usuarios/Recuperacion').post(function (req, res) {
   };
 
   dbConnect
-    .collection('usuarios')
+    .collection('Usuarios')
     .updateOne(listingQuery, updates, function (err, _result) {
       if (err) {
         res
@@ -78,7 +78,7 @@ recordRoutes.route('/Usuarios').put(function (req, res) {
     }
   };
   dbConnect
-    .collection('usuarios')
+    .collection('Usuarios')
     .updateOne(listingQuery, updates, function (err, _result) {
       if (err) {
         res
@@ -102,7 +102,7 @@ recordRoutes.route('/Usuarios/:_id').delete(function (req, res) {
   };
 
   dbConnect
-    .collection('usuarios')
+    .collection('Usuarios')
     .updateOne(listingQuery, updates, function (err, _result) {
       if (err) {
         res
@@ -122,16 +122,21 @@ recordRoutes.route('/Usuarios/Login').post(async function (_req, res) {
     "Nombre": _req.body.nombre,
     "Contrasena": _req.body.contrasena
   };
+  console.log(_req.body.nombre, _req.body.contrasena);
   dbConnect
-    .collection('usuarios')
+    .collection('Usuarios')
     .findOne(objective, function (err, _result) {
       if (err) {
+        console.log("error")
         res
           .status(400)
           .send(`Error finding user with name ${_req.body.nombre}!`);
       } else {
+        
         if (_result != null) {
+          console.log("No error")
           if (_result.Estado) {
+            console.log("result")
             jwt.sign({ _result }, 'secretkey', function (err, token) {
               res.json({
                 token : token,
