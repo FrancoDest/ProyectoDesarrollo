@@ -18,7 +18,7 @@ export class PartsService {
   constructor(private http: HttpClient) { }
 
   getPart(): Observable<Partes[]> {
-    return this.http.get<Partes[]>(this.PartesUrl).pipe(
+    return this.http.get<Partes[]>("http://localhost:3000/Partes").pipe(
       catchError(this.HandleError<Partes[]>([])));
   }
   addPart(parte: Partes): Observable<Partes> {
