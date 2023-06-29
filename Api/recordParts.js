@@ -8,10 +8,12 @@ const dbo = require('./conn');
 recordRoutes.route('/Partes').get(async function (_req, res) {
   const dbConnect = dbo.getDb();
 
+  console.log("sopa")
+  
   dbConnect
     .collection('Partes')
     .find({})
-    .limit(50)
+    .limit(10000)
     .toArray(function (err, result) {
       if (err) {
         res.status(400).send('Error fetching Parts!');
